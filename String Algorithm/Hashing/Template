@@ -176,7 +176,7 @@ struct Hashing
 //	 ll size;
 //	 string s1;  // 0 indexed
 //	 vector<ll>Hash;   // 1 indexed
-     
+//  Hashing(){}
 //	 Hashing(string s)
 //	 {
 //		 s1=s;
