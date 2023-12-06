@@ -55,10 +55,6 @@ ll gcd(ll a,ll b)
     return __gcd(a,b);
 }
  
- 
-//ll arr[1001][1001];
-
-
 
  
 ll  ara[N],ara1[N],ara2[N],ara3[N];
