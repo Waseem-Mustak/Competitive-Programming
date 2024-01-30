@@ -91,7 +91,8 @@ void find_bridge(ll node,ll parent)   //https://cp-algorithms.com/graph/bridge-s
 
             if(low[child]>starting_pos[node])   //part of bridge
             {
-                IS_BRIDGE.pb({node,child});
+                if(node<child)IS_BRIDGE.pb({node,child});
+                else IS_BRIDGE.pb({child,node});
             }
             else                // mearge them with one parent by DSU
             { 
