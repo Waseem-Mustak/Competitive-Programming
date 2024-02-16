@@ -97,11 +97,11 @@ struct BIT                 // starttttttttttttttttt
     }
     //this part is for range update
     void updateRange(int l,int r,long long val){
-        update(0,l,val);       update(0,r+1,-val);   
-        update(1,l,val*(l-1)); update(1,r+1,-val*r);
+        update(l,val,0);       update(r+1,-val,0);   
+        update(l,val*(l-1),1); update(r+1,-val*r,1);
     }
     long long sumRange(int indx){    // from ara[0]/ara[1] to ara[indx]
-        return sum(0,indx)*indx- sum(1,indx);
+        return sum(indx,0)*indx- sum(indx,1);
     }
     long long queryRange(int l,int r){
         return sumRange(r)- sumRange(l-1);
