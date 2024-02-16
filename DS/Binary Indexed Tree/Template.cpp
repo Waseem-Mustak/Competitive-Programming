@@ -89,6 +89,10 @@ struct BIT                 // starttttttttttttttttt
         }
         return ans;
     }
+    long long query(int l,int r)
+    {
+        return sum(r)-sum(l-1);
+    }
     //this part is for range update
     void updateRange(int l,int r,long long val){
         update(0,l,val);       update(0,r+1,-val);   
