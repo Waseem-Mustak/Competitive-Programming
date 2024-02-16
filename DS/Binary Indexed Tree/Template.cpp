@@ -68,33 +68,33 @@ vector<ll>v[N];
 
 struct BIT                 // starttttttttttttttttt
 {
-    vector<vector<long long>>bit;  // 1 indexing
+    vector<vector<long long>>bit;  // 0/1 indexing,change in three place
     int size;
     BIT(int n) {bit.resize(2,vector<long long>(n+2,0));size=n;}
 
     void update(int flag,int indx,long long val){  // update a value just in bit array not in main array
         while(indx<=size){
             bit[flag][indx]+=val;
-            indx+=(indx & -indx);
+            indx+=(indx & -indx); //for 1 indexing
+            // indx=(indx|(indx+1));  //for 0 indexing
         }
     }
-
-    long long sum(int flag,int indx){   // returning sum from ara[1] to ara[indx]
+    long long sum(int flag,int indx){   // returning sum from ara[0]/ara[1] to ara[indx]
         long long ans=0;
-        while(indx>0){
+        while(indx>0){   // for 1 indexing
+        // while(indx>=0){   //for 0 indexing
             ans+=bit[flag][indx];
-            indx-=(indx & -indx);
+            indx-=(indx & -indx); // for 1 indexing
+            // indx=(indx & (indx+1))-1;  //for 0 indexing
         }
         return ans;
     }
-
-
     //this part is for range update
     void updateRange(int l,int r,long long val){
         update(0,l,val);       update(0,r+1,-val);   
         update(1,l,val*(l-1)); update(1,r+1,-val*r);
     }
-    long long sumRange(int indx){    // from ara[1] to ara[indx]
+    long long sumRange(int indx){    // from ara[0]/ara[1] to ara[indx]
         return sum(0,indx)*indx- sum(1,indx);
     }
     long long queryRange(int l,int r){
