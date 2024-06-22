@@ -106,6 +106,25 @@ struct BIT                 // starttttttttttttttttt
     long long queryRange(int l,int r){
         return sumRange(r)- sumRange(l-1);
     }
+
+
+    //lower bound
+    //Search for a prefix sum ,,is it present or not
+    //https://codeforces.com/blog/entry/61364
+
+    //****// only applicable when BIT is 1 indexed
+    int LOGN=log2(size);
+    int bit_search(int v,int flag=0){
+        int sum = 0;
+        int pos = 0;
+        for(int i=LOGN; i>=0; i--){
+            if(((pos+(1<<i))<size) && (sum+bit[flag][pos+(1<<i)]<v)){
+                sum+=bit[flag][pos+(1<<i)];
+                pos+=(1<<i);
+            }
+        }
+        return pos + 1; // +1 because 'pos' will have position of largest value less than 'v'
+    }
 };
 
 
