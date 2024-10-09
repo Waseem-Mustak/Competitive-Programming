@@ -34,7 +34,7 @@ long long test_case;
 #define value(indexed_Set,ind) *indexed_Set.find_by_order(ind) 
 #define pi 2*acos(0.0)
 
-bool myComparison(const pair<pair<ll,ll>,ll> &a,const pair<pair<ll,ll>,ll> &b)	// for vector sorting  1st element small to learge (if same then second element large to small)
+bool myComparison(const pair<pair<ll,ll>,ll> &a,const pair<pair<ll,ll>,ll> &b)  // for vector sorting  1st element small to learge (if same then second element large to small)
 {
     if(a.f.f==b.f.f)return a.f.s>b.f.s;
     else return a.f.f<b.f.f;
@@ -69,9 +69,9 @@ vector<ll>v[N];
 
 
 ll block;
-bool myComparison_for_Square_Root_Decomposition(const pair<pair<ll,ll>,ll> &a,const pair<pair<ll,ll>,ll> &b)	// for vector sorting  1st element small to learge (if same then second element large to small)
+bool myComparison_for_Square_Root_Decomposition(const pair<pair<ll,ll>,ll> &a,const pair<pair<ll,ll>,ll> &b)    // for vector sorting  1st element small to learge (if same then second element large to small)
 {
-    if(a.f.f/block != b.f.f/block)	// means two are in different block based on L
+    if(a.f.f/block != b.f.f/block)  // means two are in different block based on L
     {
         return a.f.f/block < b.f.f/block;
     }
@@ -116,11 +116,11 @@ void MOs_algo()
     }
     sort(v1.begin(), v1.end(), myComparison_for_Square_Root_Decomposition);
 
-    ll distinct=1;
+    ll distinct=0;
     ll prev_L=0;
-    ll prev_R=0;
+    ll prev_R=-1;
     ll R,L;
-    frequency[ara[0]]=1;   // all for initial stage
+    frequency[ara[0]]=0;   // all for initial stage
 
     lp(i,1,q)
     {
@@ -187,7 +187,7 @@ void solve()
 
 }
 
-int main()		  //https://cses.fi/problemset/task/1734
+int main()        //https://cses.fi/problemset/task/1734
 {
     fast;
     ll t=1;
@@ -198,4 +198,4 @@ int main()		  //https://cses.fi/problemset/task/1734
         solve();
         test_case++;
     }
-} 9
+} 
