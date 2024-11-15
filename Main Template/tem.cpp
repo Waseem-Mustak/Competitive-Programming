@@ -34,6 +34,7 @@ long long test_case;
 #define value(indexed_Set,ind) *indexed_Set.find_by_order(ind) 
 #define pi 2*acos(0.0)
 #define Mems(dp,n) memset(dp,n,sizeof(dp))
+mt19937_64 rnd(time(0));
 
 bool myComparison(const pair<pair<ll,ll>,ll> &a,const pair<pair<ll,ll>,ll> &b)  // for vector sorting  1st element small to learge (if same then second element large to small)
 {

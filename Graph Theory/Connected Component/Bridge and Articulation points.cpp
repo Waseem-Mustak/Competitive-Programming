@@ -148,6 +148,34 @@ void find_articulation_points(ll node,ll parent)   //https://cp-algorithms.com/g
 
 
 
+///////////////////////////////////another bridge algo by dfsTree
+ll hasBridge=0,cntNode=0;
+ll lvl[N],dp[N];
+//dp[u]as the number of back-edges passing over the 
+ //edge between u and its parent. Then,
+ //https://codeforces.com/blog/entry/68138
+void DFSBridge(int u){
+     lvl[1]=1; //do it in main func
+     cntNode++;
+  dp[u]=0;
+  for(int v:graph[u]){
+    if(lvl[v]==0){ /* edge to child */
+      lvl[v]=lvl[u]+1;
+      DFSBridge(v);
+      dp[u]+=dp[v];
+    }else if(lvl[v]<lvl[u]){ /* edge upwards */
+      dp[u]++;
+    }else if(lvl[v]>lvl[u]){ /* edge downwards */
+      dp[u]--;
+    }
+  }
+  /* the parent edge isn't a back-edge, subtract 1 to compensate */
+  dp[u]--;
+  if(lvl[u]>1 && dp[u]==0){
+    hasBridge++;
+  }
+}
+
 
 
  
